@@ -33,7 +33,7 @@ jobs:
           ^COSMOS_.*
         REPOSITORIES: |
           ^jvsrikanth11/scrs-test-secrets-project$
-        DRY_RUN: true
+        DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       env:
         APP_KEY: ${{secrets.APP_KEY}}
