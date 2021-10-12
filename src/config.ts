@@ -51,7 +51,7 @@ export function getConfig(): Config {
       core.getInput("DELETE", { required: false }).toLowerCase()
     )
   };
-
+  console.log("getConfig  --> "+ JSON.stringify(config));
   if (config.DRY_RUN) {
     core.info("[DRY_RUN='true'] No changes will be written to secrets");
   }
