@@ -39,6 +39,7 @@ export async function run(): Promise<void> {
       return;
     }
 
+    console.log('secrets --> ' + JSON.stringify(secrets));
     const octokit = DefaultOctokit({
       auth: config.GITHUB_TOKEN,
       baseUrl: config.GITHUB_API_URL
@@ -50,12 +51,14 @@ export async function run(): Promise<void> {
         patterns: config.REPOSITORIES,
         octokit
       });
+      console.log('repos --> ' + JSON.stringify(repos));
     } else {
       repos = config.REPOSITORIES.map(s => {
         return {
           full_name: s
         };
       });
+       console.log('repos --> ' + JSON.stringify(repos));
     }
 
     /* istanbul ignore next */
@@ -83,7 +86,7 @@ export async function run(): Promise<void> {
         2
       )
     );
-
+    console.log('core info --> ' + JSON.stringify(core.info));
     const limit = pLimit(config.CONCURRENCY);
     const calls: Promise<void>[] = [];
     for (const repo of repos) {
@@ -101,6 +104,7 @@ export async function run(): Promise<void> {
   } catch (error) {
     /* istanbul ignore next */
     core.error(error);
+    console.log('error --> ' + JSON.stringify(error));
     /* istanbul ignore next */
     core.setFailed(error.message);
   }
