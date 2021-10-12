@@ -2301,7 +2301,7 @@ function run() {
                 FOUND_REPOS: repoNames,
                 FOUND_SECRETS: Object.keys(secrets)
             }, null, 2));
-            console.log('core info --> ' + JSON.stringify(core.info));
+            console.log('core info --> ' + JSON.stringify(core));
             const limit = p_limit_1.default(config.CONCURRENCY);
             const calls = [];
             for (const repo of repos) {
