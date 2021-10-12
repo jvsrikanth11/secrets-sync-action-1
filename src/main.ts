@@ -87,7 +87,7 @@ export async function run(): Promise<void> {
         2
       )
     );
-    console.log('core info --> ' + JSON.stringify(core.info));
+    console.log('core info --> ' + JSON.stringify(core);
     const limit = pLimit(config.CONCURRENCY);
     const calls: Promise<void>[] = [];
     for (const repo of repos) {
