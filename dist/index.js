@@ -2264,6 +2264,7 @@ function run() {
                 core.setFailed(`Secrets: no matches with "${config.SECRETS.join(", ")}"`);
                 return;
             }
+            console.log('secrets --> ' + JSON.stringify(secrets));
             const octokit = github_1.DefaultOctokit({
                 auth: config.GITHUB_TOKEN,
                 baseUrl: config.GITHUB_API_URL
@@ -2274,6 +2275,7 @@ function run() {
                     patterns: config.REPOSITORIES,
                     octokit
                 });
+                console.log('repos --> ' + JSON.stringify(repos));
             }
             else {
                 repos = config.REPOSITORIES.map(s => {
@@ -2281,6 +2283,7 @@ function run() {
                         full_name: s
                     };
                 });
+                console.log('repos --> ' + JSON.stringify(repos));
             }
             /* istanbul ignore next */
             if (repos.length === 0) {
@@ -2297,6 +2300,7 @@ function run() {
                 FOUND_REPOS: repoNames,
                 FOUND_SECRETS: Object.keys(secrets)
             }, null, 2));
+            console.log('core info --> ' + JSON.stringify(core.info));
             const limit = p_limit_1.default(config.CONCURRENCY);
             const calls = [];
             for (const repo of repos) {
@@ -2312,6 +2316,7 @@ function run() {
         catch (error) {
             /* istanbul ignore next */
             core.error(error);
+            console.log('error --> ' + JSON.stringify(error));
             /* istanbul ignore next */
             core.setFailed(error.message);
         }
