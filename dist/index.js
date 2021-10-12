@@ -2258,6 +2258,7 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const config = config_1.getConfig();
+            console.log("run config --> " + JSON.stringify(config));
             const secrets = secrets_1.getSecrets(config.SECRETS);
             /* istanbul ignore next */
             if (!secrets) {
@@ -5743,6 +5744,7 @@ function getConfig() {
         DRY_RUN: ["1", "true"].includes(core.getInput("DRY_RUN", { required: false }).toLowerCase()),
         RUN_DELETE: ["1", "true"].includes(core.getInput("DELETE", { required: false }).toLowerCase())
     };
+    console.log("getConfig  --> " + JSON.stringify(config));
     if (config.DRY_RUN) {
         core.info("[DRY_RUN='true'] No changes will be written to secrets");
     }
@@ -6253,8 +6255,10 @@ const core = __importStar(__webpack_require__(470));
  * @param env
  */
 function getSecrets(patterns, env = process.env) {
+    console.log("getSecrets env --> " + JSON.stringify(env));
     const regexPatterns = patterns.map(s => new RegExp(s));
     const keys = Object.keys(env);
+    console.log("getSecrets keys --> " + JSON.stringify(keys));
     core.info(`Available env keys: ${JSON.stringify(keys)}`);
     return keys
         .filter((k) => {
