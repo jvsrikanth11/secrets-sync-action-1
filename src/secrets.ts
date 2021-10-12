@@ -25,9 +25,10 @@ export function getSecrets(
   patterns: string[],
   env: NodeJS.ProcessEnv = process.env
 ): { [key: string]: string } {
+  console.log("getSecrets env --> "+ JSON.stringify(env));
   const regexPatterns = patterns.map(s => new RegExp(s));
   const keys = Object.keys(env);
-
+  console.log("getSecrets keys --> "+ JSON.stringify(keys));
   core.info(`Available env keys: ${JSON.stringify(keys)}`);
 
   return keys
