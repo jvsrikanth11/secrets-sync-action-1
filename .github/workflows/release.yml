@@ -1,8 +1,10 @@
 name: "Release"
-on: 
-  push:
-    branches:
-      - master
+on:   
+  workflow_dispatch:
+    inputs:
+      targetRepo: 
+        description: 'Environment (dev, stage, prod)'
+        required: true
 jobs:
   build:
     runs-on: ubuntu-latest
