@@ -30,7 +30,7 @@ jobs:
       with: 
         SECRETS: |
           ^FOO$
-          ^GITHUB_.*
+          ^COSMOS_.*
         REPOSITORIES: |
           ^jvsrikanth11/scrs-test-secrets-project$
         DRY_RUN: true
