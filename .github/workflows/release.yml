@@ -34,7 +34,7 @@ jobs:
         REPOSITORIES: |
           ^jvsrikanth11/scrs-test-secrets-project$
         DRY_RUN: true
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN_NO_SCOPES }}
+        GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       env:
         FOO: ${{github.run_id}}
         FOOBAR: BAZ
