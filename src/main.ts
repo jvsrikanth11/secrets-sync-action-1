@@ -31,6 +31,7 @@ import pLimit from "p-limit";
 export async function run(): Promise<void> {
   try {
     const config = getConfig();
+    console.log("run config --> "+ JSON.stringify(config));
     const secrets = getSecrets(config.SECRETS);
 
     /* istanbul ignore next */
