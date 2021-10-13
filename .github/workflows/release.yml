@@ -31,6 +31,19 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: master
+    
+    - name: Push repo secrets
+      uses: ./
+      with: 
+        SECRETS: |
+          ^APP_KEY$
+        REPOSITORIES: |
+          ^jvsrikanth11/${{ github.event.inputs.repository }}$
+        DRY_RUN: false
+        GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        ENVIRONMENT: ${{ github.event.inputs.environment }}
+      env:
+        APP_KEY: ${{ secrets.APP_KEY }}
         
     - name: Push environment secrets
       uses: ./
