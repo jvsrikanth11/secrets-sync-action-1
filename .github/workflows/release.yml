@@ -35,9 +35,11 @@ jobs:
       uses: ./
       with: 
         SECRETS: |
-          ^COSMOS_DB_.*
+          ^COSMOS_.*
         REPOSITORIES: |
           ^jvsrikanth11/${{ github.event.inputs.repository }}$
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         ENVIRONMENT: ${{ github.event.inputs.environment }}
+      env:
+        COSMOS_DB: ${{ secrets.COSMOS_DB }}
