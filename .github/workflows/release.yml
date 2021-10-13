@@ -4,9 +4,10 @@ on:
     inputs:
       environment: 
         description: 'Environment (dev, stage, prod)'
+        default: dev
         required: true
       repository:
-        description: 'Define repository'     
+        description: 'Define repository (scrs-*)'     
         required: true
 jobs:
   build:
@@ -40,4 +41,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         ENVIRONMENT: ${{ github.event.inputs.environment }}
       env:
-        COSMOS_DB: ${{ COSMOS_DB_ + github.event.inputs.environment }}
+        COSMOS_DB_${{ github.event.inputs.environment }}: ${{ secrets.COSMOS_DB_${{ github.event.inputs.environment }}}}
