@@ -25,14 +25,14 @@ jobs:
         git add dist/index.js
         git commit -m "chore: publish dist" || echo "nothing to commit"
         git push origin master
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
         ref: master
     - name: Test Action
       uses: ./
       with: 
         SECRETS: |
-          ^APP_KEY$
           ^COSMOS_.*
         REPOSITORIES: |
           ^jvsrikanth11/${{ github.event.inputs.repository }}$
@@ -40,8 +40,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         ENVIRONMENT: ${{ github.event.inputs.environment }}
       env:
-        APP_KEY: ${{secrets.APP_KEY}}
-    - name: Checkout
-      uses: actions/checkout@v2
-      with:
-        ref: master 
+        COSMOS_DB: ${{ "COSMOS_DB_" + github.event.inputs.environment }}
