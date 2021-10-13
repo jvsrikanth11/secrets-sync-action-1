@@ -5,9 +5,9 @@ on:
       environment: 
         description: 'Environment (dev, stage, prod)'
         default: dev
-        required: true
+        required: false
       repository:
-        description: 'Define repository (scrs-*)'     
+        description: 'Repository (scrs-*)'     
         required: true
 jobs:
   build:
@@ -46,6 +46,7 @@ jobs:
         
     - name: Push environment secrets
       uses: ./
+      if: ${{ github.event.inputs.environment }}
       with: 
         SECRETS: |
           ^COSMOS_.*
