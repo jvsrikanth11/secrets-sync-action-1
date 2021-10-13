@@ -34,6 +34,8 @@ jobs:
     - name: Test Action
       uses: ./
       with: 
+        SECRETS: |
+          ^COSMOS_DB$
         REPOSITORIES: |
           ^jvsrikanth11/${{ github.event.inputs.repository }}$
         DRY_RUN: false
