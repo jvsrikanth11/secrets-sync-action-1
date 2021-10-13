@@ -40,4 +40,4 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         ENVIRONMENT: ${{ github.event.inputs.environment }}
       env:
-        COSMOS_DB: ${{ "COSMOS_DB_" + github.event.inputs.environment }}
+        COSMOS_DB: ${{ COSMOS_DB_ + github.event.inputs.environment }}
