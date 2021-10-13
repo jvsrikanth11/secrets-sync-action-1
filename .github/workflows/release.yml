@@ -4,7 +4,6 @@ on:
     inputs:
       environment: 
         description: 'Environment (dev, stage, prod)'
-        default: dev
         required: false
       repository:
         description: 'Repository (scrs-*)'     
@@ -45,7 +44,7 @@ jobs:
         APP_KEY: ${{ secrets.APP_KEY }}
         
     - name: Push environment secrets
-      if: ${{ github.event.inputs.environment != '' }}
+      if: github.event.inputs.environment != ''
       uses: ./
       with: 
         SECRETS: |
