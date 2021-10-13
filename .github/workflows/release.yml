@@ -36,9 +36,9 @@ jobs:
       with: 
         REPOSITORIES_LIST_REGEX: false
         SECRETS: |
-          ^APP_KEY$
+           APP_KEY
         REPOSITORIES: |
-          ^jvsrikanth11/${{ github.event.inputs.repository }}$
+          jvsrikanth11/${{ github.event.inputs.repository }}
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
       env:
@@ -50,9 +50,9 @@ jobs:
       with:
         REPOSITORIES_LIST_REGEX: false
         SECRETS: |
-          ^COSMOS_.*
+          COSMOS_DB
         REPOSITORIES: |
-          ^jvsrikanth11/${{ github.event.inputs.repository }}$
+          jvsrikanth11/${{ github.event.inputs.repository }}
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
         ENVIRONMENT: ${{ github.event.inputs.environment }}
