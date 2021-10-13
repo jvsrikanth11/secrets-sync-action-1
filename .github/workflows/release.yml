@@ -31,7 +31,8 @@ jobs:
       uses: actions/checkout@v2
       with:
         ref: master
-    - name: Test Action
+        
+    - name: Push environment secrets
       uses: ./
       with: 
         SECRETS: |
