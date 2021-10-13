@@ -5,7 +5,7 @@ on:
       environment: 
         description: 'Environment (dev, stage, prod)'
         default: dev
-        required: true
+        required: false
       repository:
         description: 'Repository (scrs-*)'     
         required: true
