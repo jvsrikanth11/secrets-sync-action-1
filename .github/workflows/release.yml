@@ -35,6 +35,7 @@ jobs:
           ^jvsrikanth11/scrs-test-secrets-project$
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        ENVIRONMENT: dev
       env:
         APP_KEY: ${{secrets.APP_KEY}}
     - name: Checkout
