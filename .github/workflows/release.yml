@@ -34,6 +34,7 @@ jobs:
     - name: Push repository secrets
       uses: ./
       with: 
+        REPOSITORIES_LIST_REGEX: false
         SECRETS: |
           ^APP_KEY$
         REPOSITORIES: |
