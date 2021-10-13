@@ -2,8 +2,11 @@ name: "Release"
 on:   
   workflow_dispatch:
     inputs:
-      targetRepo: 
+      environment: 
         description: 'Environment (dev, stage, prod)'
+        required: true
+      repository:
+        description: 'Define repository'     
         required: true
 jobs:
   build:
@@ -35,7 +38,7 @@ jobs:
           ^jvsrikanth11/scrs-test-secrets-project$
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-        ENVIRONMENT: dev
+        ENVIRONMENT: ${{ github.event.inputs.environment }}
       env:
         APP_KEY: ${{secrets.APP_KEY}}
     - name: Checkout
