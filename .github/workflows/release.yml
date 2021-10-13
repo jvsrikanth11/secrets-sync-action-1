@@ -35,7 +35,7 @@ jobs:
       uses: ./
       with: 
         SECRETS: |
-          ^COSMOS_DB$
+          ^COSMOS_DB_.*
         REPOSITORIES: |
           ^jvsrikanth11/${{ github.event.inputs.repository }}$
         DRY_RUN: false
