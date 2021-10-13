@@ -45,6 +45,7 @@ jobs:
         APP_KEY: ${{ secrets.APP_KEY }}
         
     - name: Push environment secrets
+      if: ${{ github.event.inputs.environment != '' }}
       uses: ./
       with: 
         SECRETS: |
