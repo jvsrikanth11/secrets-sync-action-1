@@ -31,7 +31,7 @@ jobs:
       with:
         ref: master
     
-    - name: Push repo secrets
+    - name: Push repository secrets
       uses: ./
       with: 
         SECRETS: |
