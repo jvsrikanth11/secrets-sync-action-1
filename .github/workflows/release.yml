@@ -41,7 +41,6 @@ jobs:
           ^jvsrikanth11/${{ github.event.inputs.repository }}$
         DRY_RUN: false
         GITHUB_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
-        ENVIRONMENT: ${{ github.event.inputs.environment }}
       env:
         APP_KEY: ${{ secrets.APP_KEY }}
         
