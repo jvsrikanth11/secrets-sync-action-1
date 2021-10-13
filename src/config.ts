@@ -17,7 +17,6 @@
 import * as core from "@actions/core";
 
 export interface Config {
-  GITHUB_API_URL: string;
   GITHUB_TOKEN: string;
   SECRETS: string[];
   REPOSITORIES: string[];
@@ -26,14 +25,11 @@ export interface Config {
   RETRIES: number;
   CONCURRENCY: number;
   RUN_DELETE: boolean;
+  ENVIRONMENT: string;
 }
 
 export function getConfig(): Config {
   const config = {
-    GITHUB_API_URL:
-      core.getInput("GITHUB_API_URL") ||
-      process.env.GITHUB_API_URL ||
-      "https://api.github.com",
     GITHUB_TOKEN: core.getInput("GITHUB_TOKEN", { required: true }),
     CONCURRENCY: Number(core.getInput("CONCURRENCY")),
     RETRIES: Number(core.getInput("RETRIES")),
@@ -49,9 +45,10 @@ export function getConfig(): Config {
     ),
     RUN_DELETE: ["1", "true"].includes(
       core.getInput("DELETE", { required: false }).toLowerCase()
-    )
+    ),
+    ENVIRONMENT: core.getInput("ENVIRONMENT", { required: false }),
   };
-  console.log("getConfig  --> "+ JSON.stringify(config));
+
   if (config.DRY_RUN) {
     core.info("[DRY_RUN='true'] No changes will be written to secrets");
   }
